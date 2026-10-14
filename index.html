@@ -255,8 +255,9 @@
     .logos__lbl{font-family:var(--f-mono);font-size:.68rem;letter-spacing:.16em;text-transform:uppercase;color:var(--haze);flex:none;}
     .logos ul{display:flex;flex-wrap:wrap;gap:.9rem 1.8rem;align-items:center;flex:1;}
     .logos li{font-family:var(--f-display);font-stretch:125%;font-weight:700;font-size:.88rem;letter-spacing:-.01em;color:var(--haze);opacity:.85;display:inline-flex;align-items:center;gap:.4rem;transition:color .25s,opacity .25s;}
-    .logos li:hover{color:var(--ink);opacity:1;}
-    .logos li svg{width:16px;height:16px;}
+    .logos li{cursor:default;}
+    .logos li:hover,.logos li:focus{color:var(--brand,var(--ink));opacity:1;transform:translateY(-2px);}
+    .logos li svg{width:18px;height:18px;flex:none;}
     @media (max-width:720px){ .logos .wrap{flex-direction:column;align-items:flex-start;gap:1rem;} .logos ul{gap:.7rem 1.3rem;} .logos li{font-size:.8rem;} }
 
     /* ============ SERVICES ============ */
@@ -337,6 +338,12 @@
     .plan--hot .plan__price small,.plan--hot .plan__price em{color:#B7B0A0;}
     .plan__for{font-family:var(--f-text);font-weight:600;font-size:1.15rem;line-height:1.3;}
     .plan__price{font-family:var(--f-display);font-stretch:125%;font-weight:800;font-size:2.1rem;letter-spacing:-.03em;line-height:1;margin-top:.2rem;}
+    .usd{position:relative;cursor:help;border-bottom:2px dashed color-mix(in srgb,currentColor 35%,transparent);outline:none;}
+    .usd:focus-visible{border-bottom-color:var(--amber);}
+    .usd .ars{position:absolute;left:0;top:calc(100% + .7rem);z-index:30;width:max-content;max-width:15.5rem;background:var(--amber-strong);color:var(--on-amber);font-family:var(--f-text);font-stretch:100%;font-weight:500;font-size:.82rem;letter-spacing:0;line-height:1.45;white-space:normal;padding:.7rem .9rem;border-radius:12px;box-shadow:var(--shadow);opacity:0;visibility:hidden;transform:translateY(-4px);transition:opacity .18s,transform .18s,visibility 0s .18s;pointer-events:none;}
+    .usd .ars b{display:block;font-family:var(--f-display);font-stretch:125%;font-size:1.05rem;font-weight:800;letter-spacing:-.01em;}
+    .usd .ars span{display:block;opacity:.9;font-size:.74rem;}
+    .usd:hover .ars,.usd:focus .ars{opacity:1;visibility:visible;transform:none;transition-delay:0s;}
     .plan__price small{font-family:var(--f-mono);font-weight:400;font-size:.72rem;letter-spacing:.08em;color:var(--haze);margin-left:.3rem;}
     .plan__price em{font-style:normal;font-family:var(--f-mono);font-weight:400;font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;color:var(--haze);display:block;margin-bottom:.35rem;}
     .plan ul{display:flex;flex-direction:column;gap:.55rem;margin-top:.4rem;font-size:.92rem;color:var(--ink-soft);}
@@ -361,7 +368,13 @@
     .avatar--sky{background:linear-gradient(135deg,var(--sky),#3E5C63);color:#fff;}
     .avatar--ink{background:var(--ink);color:var(--sand);}
     .quote__who b{display:block;font-size:.92rem;font-weight:600;}
+    .quote__who .avatar{color:var(--on-amber);font-family:var(--f-display);letter-spacing:0;text-transform:none;font-size:.85rem;}
+    .quote__who .avatar--sky{color:#fff;}
+    .quote__who .avatar--ink{color:var(--sand);}
     .quote__who span{font-family:var(--f-mono);font-size:.66rem;letter-spacing:.1em;text-transform:uppercase;color:var(--haze);}
+    .quote__web{display:inline-flex;align-items:center;gap:.4rem;align-self:flex-start;font-family:var(--f-mono);font-size:.72rem;letter-spacing:.03em;color:var(--amber-strong);border:1px solid var(--line);border-radius:999px;padding:.32rem .75rem;transition:border-color .2s,background .2s;}
+    .quote__web svg{width:13px;height:13px;flex:none;}
+    .quote__web:hover{border-color:var(--amber-strong);background:color-mix(in srgb,var(--amber) 8%,transparent);}
     @media (max-width:900px){ .quotes{grid-template-columns:1fr;} }
 
     /* ============ TEAM ============ */
@@ -372,6 +385,9 @@
     .member b{font-size:1rem;font-weight:600;}
     .member span{font-family:var(--f-mono);font-size:.66rem;letter-spacing:.12em;text-transform:uppercase;color:var(--amber-strong);}
     .member p{font-size:.88rem;color:var(--ink-soft);}
+    .member .avatar{color:#fff;}
+    .member .avatar svg{width:28px;height:28px;}
+    .member .btn{margin-top:auto;align-self:flex-start;white-space:nowrap;}
     .team__text p{margin-top:1rem;color:var(--ink-soft);}
     @media (max-width:860px){ .team{grid-template-columns:1fr;gap:2rem;} }
     @media (max-width:480px){ .team__cards{grid-template-columns:1fr;} }
@@ -418,6 +434,7 @@
     .form__row-actions{display:flex;flex-wrap:wrap;gap:.7rem;align-items:center;margin-top:.3rem;}
     .form small{color:#8B8474;font-size:.78rem;}
     .form small.ok{color:#8FD4AF;}
+    .btn svg{width:16px;height:16px;flex:none;}
     .btn--wa{border-color:#3A342A;color:#E9E3D5;}
     .btn--wa:hover{background:rgba(255,255,255,.05);}
     .hp{position:absolute;left:-9999px;opacity:0;height:0;width:0;}
@@ -425,10 +442,10 @@
     @media (max-width:900px){ .footer__grid{grid-template-columns:1fr;gap:2.2rem;} .form .row{grid-template-columns:1fr;} }
 
     /* ============ WHATSAPP FLOTANTE ============ */
-    .wa-float{position:fixed;right:1.2rem;bottom:1.2rem;z-index:60;display:flex;align-items:center;gap:.6rem;background:#25D366;color:#fff;padding:.75rem 1.1rem .75rem .85rem;border-radius:999px;box-shadow:0 14px 34px -12px rgba(37,211,102,.7);font-family:var(--f-mono);font-size:.74rem;letter-spacing:.08em;text-transform:uppercase;transition:transform .25s cubic-bezier(.2,.7,.2,1),opacity .4s;opacity:0;transform:translateY(12px);}
+    .wa-float{position:fixed;right:1.2rem;bottom:1.2rem;z-index:60;display:flex;align-items:center;gap:.6rem;background:#25D366;color:#fff;padding:.75rem 1.1rem .75rem .85rem;border-radius:999px;box-shadow:0 14px 34px -12px rgba(37,211,102,.7);font-family:var(--f-mono);font-size:.74rem;letter-spacing:.08em;text-transform:uppercase;transition:transform .25s cubic-bezier(.2,.7,.2,1),opacity .4s;opacity:1;transform:none;}
     .wa-float.show{opacity:1;transform:none;}
     .wa-float:hover{transform:translateY(-2px) scale(1.03);}
-    .wa-float svg{width:22px;height:22px;}
+    .wa-float svg{width:26px;height:26px;flex:none;}
     @media (max-width:520px){ .wa-float span{display:none;} .wa-float{padding:.85rem;} }
 
     /* ============ REVEAL ============ */
@@ -524,7 +541,7 @@
             </div>
           </div>
 
-          <div class="chip chip--a"><b>+38%</b><span>consultas<br>en 60 días</span></div>
+          <div class="chip chip--a"><b>48 h</b><span>respuesta<br>a tu consulta</span></div>
           <div class="chip chip--b"><b>24/7</b><span>atención<br>automática</span></div>
         </div>
       </div>
@@ -536,8 +553,14 @@
     <div class="wrap">
       <span class="logos__lbl">Trabajamos sobre</span>
       <ul>
-        <li>Google Ads</li><li>Meta Business</li><li>WhatsApp Business</li><li>Mercado Pago</li>
-        <li>Tiendanube</li><li>Shopify</li><li>WordPress</li><li>Vercel</li>
+        <li style="--brand:#4285F4"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M3.9998 22.9291C1.7908 22.9291 0 21.1383 0 18.9293s1.7908-3.9998 3.9998-3.9998 3.9998 1.7908 3.9998 3.9998-1.7908 3.9998-3.9998 3.9998zm19.4643-6.0004L15.4632 3.072C14.3586 1.1587 11.9121.5028 9.9988 1.6074S7.4295 5.1585 8.5341 7.0718l8.0009 13.8567c1.1046 1.9133 3.5511 2.5679 5.4644 1.4646 1.9134-1.1046 2.568-3.5511 1.4647-5.4644zM7.5137 4.8438L1.5645 15.1484A4.5 4.5 0 0 1 4 14.4297c2.5597-.0075 4.6248 2.1585 4.4941 4.7148l3.2168-5.5723-3.6094-6.25c-.4499-.7793-.6322-1.6394-.5878-2.4784z"/></svg>Google Ads</li>
+        <li style="--brand:#0467DF"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6.915 4.03c-1.968 0-3.683 1.28-4.871 3.113C.704 9.208 0 11.883 0 14.449c0 .706.07 1.369.21 1.973a6.624 6.624 0 0 0 .265.86 5.297 5.297 0 0 0 .371.761c.696 1.159 1.818 1.927 3.593 1.927 1.497 0 2.633-.671 3.965-2.444.76-1.012 1.144-1.626 2.663-4.32l.756-1.339.186-.325c.061.1.121.196.183.3l2.152 3.595c.724 1.21 1.665 2.556 2.47 3.314 1.046.987 1.992 1.22 3.06 1.22 1.075 0 1.876-.355 2.455-.843a3.743 3.743 0 0 0 .81-.973c.542-.939.861-2.127.861-3.745 0-2.72-.681-5.357-2.084-7.45-1.282-1.912-2.957-2.93-4.716-2.93-1.047 0-2.088.467-3.053 1.308-.652.57-1.257 1.29-1.82 2.05-.69-.875-1.335-1.547-1.958-2.056-1.182-.966-2.315-1.303-3.454-1.303zm10.16 2.053c1.147 0 2.188.758 2.992 1.999 1.132 1.748 1.647 4.195 1.647 6.4 0 1.548-.368 2.9-1.839 2.9-.58 0-1.027-.23-1.664-1.004-.496-.601-1.343-1.878-2.832-4.358l-.617-1.028a44.908 44.908 0 0 0-1.255-1.98c.07-.109.141-.224.211-.327 1.12-1.667 2.118-2.602 3.358-2.602zm-10.201.553c1.265 0 2.058.791 2.675 1.446.307.327.737.871 1.234 1.579l-1.02 1.566c-.757 1.163-1.882 3.017-2.837 4.338-1.191 1.649-1.81 1.817-2.486 1.817-.524 0-1.038-.237-1.383-.794-.263-.426-.464-1.13-.464-2.046 0-2.221.63-4.535 1.66-6.088.454-.687.964-1.226 1.533-1.533a2.264 2.264 0 0 1 1.088-.285z"/></svg>Meta Business</li>
+        <li style="--brand:#25D366"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>WhatsApp Business</li>
+        <li style="--brand:#00B1EA"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M11.115 16.479a.93.927 0 0 1-.939-.886c-.002-.042-.006-.155-.103-.155-.04 0-.074.023-.113.059-.112.103-.254.206-.46.206a.816.814 0 0 1-.305-.066c-.535-.214-.542-.578-.521-.725.006-.038.007-.08-.02-.11l-.032-.03h-.034c-.027 0-.055.012-.093.039a.788.786 0 0 1-.454.16.7.699 0 0 1-.253-.05c-.708-.27-.65-.928-.617-1.126.005-.041-.005-.072-.03-.092l-.05-.04-.047.043a.728.726 0 0 1-.505.203.73.728 0 0 1-.732-.725c0-.4.328-.722.732-.722.364 0 .675.27.721.63l.026.195.11-.165c.01-.018.307-.46.852-.46.102 0 .21.016.316.05.434.13.508.52.519.68.008.094.075.1.09.1.037 0 .064-.024.083-.045a.746.744 0 0 1 .54-.225c.128 0 .263.03.402.09.69.293.379 1.158.374 1.167-.058.144-.061.207-.005.244l.027.013h.02c.03 0 .07-.014.134-.035.093-.032.235-.08.367-.08a.944.942 0 0 1 .94.93.936.934 0 0 1-.94.928zm7.302-4.171c-1.138-.98-3.768-3.24-4.481-3.77-.406-.302-.685-.462-.928-.533a1.559 1.554 0 0 0-.456-.07c-.182 0-.376.032-.58.095-.46.145-.918.505-1.362.854l-.023.018c-.414.324-.84.66-1.164.73a1.986 1.98 0 0 1-.43.049c-.362 0-.687-.104-.81-.258-.02-.025-.007-.066.04-.125l.008-.008 1-1.067c.783-.774 1.525-1.506 3.23-1.545h.085c1.062 0 2.12.469 2.24.524a7.03 7.03 0 0 0 3.056.724c1.076 0 2.188-.263 3.354-.795a9.135 9.11 0 0 0-.405-.317c-1.025.44-2.003.66-2.946.66-.962 0-1.925-.229-2.858-.68-.05-.022-1.22-.567-2.44-.57-.032 0-.065 0-.096.002-1.434.033-2.24.536-2.782.976-.528.013-.982.138-1.388.25-.361.1-.673.186-.979.185-.125 0-.35-.01-.37-.012-.35-.01-2.115-.437-3.518-.962-.143.1-.28.203-.415.31 1.466.593 3.25 1.053 3.812 1.089.157.01.323.027.491.027.372 0 .744-.103 1.104-.203.213-.059.446-.123.692-.17l-.196.194-1.017 1.087c-.08.08-.254.294-.14.557a.705.703 0 0 0 .268.292c.243.162.677.27 1.08.271.152 0 .297-.015.43-.044.427-.095.874-.448 1.349-.82.377-.296.913-.672 1.323-.782a1.494 1.49 0 0 1 .37-.05.611.61 0 0 1 .095.005c.27.034.533.125 1.003.472.835.62 4.531 3.815 4.566 3.846.002.002.238.203.22.537-.007.186-.11.352-.294.466a.902.9 0 0 1-.484.15.804.802 0 0 1-.428-.124c-.014-.01-1.28-1.157-1.746-1.543-.074-.06-.146-.115-.22-.115a.122.122 0 0 0-.096.045c-.073.09.01.212.105.294l1.48 1.47c.002 0 .184.17.204.395.012.244-.106.447-.35.606a.957.955 0 0 1-.526.171.766.764 0 0 1-.42-.127l-.214-.206a21.035 20.978 0 0 0-1.08-1.009c-.072-.058-.148-.112-.221-.112a.127.127 0 0 0-.094.038c-.033.037-.056.103.028.212a.698.696 0 0 0 .075.083l1.078 1.198c.01.01.222.26.024.511l-.038.048a1.18 1.178 0 0 1-.1.096c-.184.15-.43.164-.527.164a.8.798 0 0 1-.147-.012c-.106-.018-.178-.048-.212-.089l-.013-.013c-.06-.06-.602-.609-1.054-.98-.059-.05-.133-.11-.21-.11a.128.128 0 0 0-.096.042c-.09.096.044.24.1.293l.92 1.003a.204.204 0 0 1-.033.062c-.033.044-.144.155-.479.196a.91.907 0 0 1-.122.007c-.345 0-.712-.164-.902-.264a1.343 1.34 0 0 0 .13-.576 1.368 1.365 0 0 0-1.42-1.357c.024-.342-.025-.99-.697-1.274a1.455 1.452 0 0 0-.575-.125c-.146 0-.287.025-.42.075a1.153 1.15 0 0 0-.671-.564 1.52 1.515 0 0 0-.494-.085c-.28 0-.537.08-.767.242a1.168 1.165 0 0 0-.903-.43 1.173 1.17 0 0 0-.82.335c-.287-.217-1.425-.93-4.467-1.613a17.39 17.344 0 0 1-.692-.189 4.822 4.82 0 0 0-.077.494l.67.157c3.108.682 4.136 1.391 4.309 1.525a1.145 1.142 0 0 0-.09.442 1.16 1.158 0 0 0 1.378 1.132c.096.467.406.821.879 1.003a1.165 1.162 0 0 0 .415.08c.09 0 .179-.012.266-.034.086.22.282.493.722.668a1.233 1.23 0 0 0 .457.094c.122 0 .241-.022.355-.063a1.373 1.37 0 0 0 1.269.841c.37.002.726-.147.985-.41.221.121.688.341 1.163.341.06 0 .118-.002.175-.01.47-.059.689-.24.789-.382a.571.57 0 0 0 .048-.078c.11.032.234.058.373.058.255 0 .501-.086.75-.265.244-.174.418-.424.444-.637v-.01c.083.017.167.026.251.026.265 0 .527-.082.773-.242.48-.31.562-.715.554-.98a1.28 1.279 0 0 0 .978-.194 1.04 1.04 0 0 0 .502-.808 1.088 1.085 0 0 0-.16-.653c.804-.342 2.636-1.003 4.795-1.483a4.734 4.721 0 0 0-.067-.492 27.742 27.667 0 0 0-5.049 1.62zm5.123-.763c0 4.027-5.166 7.293-11.537 7.293-6.372 0-11.538-3.266-11.538-7.293 0-4.028 5.165-7.293 11.539-7.293 6.371 0 11.537 3.265 11.537 7.293zm.46.004c0-4.272-5.374-7.755-12-7.755S.002 7.277.002 11.55L0 12.004c0 4.533 4.695 8.203 11.999 8.203 7.347 0 12-3.67 12-8.204z"/></svg>Mercado Pago</li>
+        <li style="--brand:#0050C3"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7 19a4.5 4.5 0 0 1-.9-8.9A6 6 0 0 1 17.7 9.4 4.8 4.8 0 0 1 17.5 19z"/></svg>Tiendanube</li>
+        <li style="--brand:#7AB55C"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M15.337 23.979l7.216-1.561s-2.604-17.613-2.625-17.73c-.018-.116-.114-.192-.211-.192s-1.929-.136-1.929-.136-1.275-1.274-1.439-1.411c-.045-.037-.075-.057-.121-.074l-.914 21.104h.023zM11.71 11.305s-.81-.424-1.774-.424c-1.447 0-1.504.906-1.504 1.141 0 1.232 3.24 1.715 3.24 4.629 0 2.295-1.44 3.76-3.406 3.76-2.354 0-3.54-1.465-3.54-1.465l.646-2.086s1.245 1.066 2.28 1.066c.675 0 .975-.545.975-.932 0-1.619-2.654-1.694-2.654-4.359-.034-2.237 1.571-4.416 4.827-4.416 1.257 0 1.875.361 1.875.361l-.945 2.715-.02.01zM11.17.83c.136 0 .271.038.405.135-.984.465-2.064 1.639-2.508 3.992-.656.213-1.293.405-1.889.578C7.697 3.75 8.951.84 11.17.84V.83zm1.235 2.949v.135c-.754.232-1.583.484-2.394.736.466-1.777 1.333-2.645 2.085-2.971.193.501.309 1.176.309 2.1zm.539-2.234c.694.074 1.141.867 1.429 1.755-.349.114-.735.231-1.158.366v-.252c0-.752-.096-1.371-.271-1.871v.002zm2.992 1.289c-.02 0-.06.021-.078.021s-.289.075-.714.21c-.423-1.233-1.176-2.37-2.508-2.37h-.115C12.135.209 11.669 0 11.265 0 8.159 0 6.675 3.877 6.21 5.846c-1.194.365-2.063.636-2.16.674-.675.213-.694.232-.772.87-.075.462-1.83 14.063-1.83 14.063L15.009 24l.927-21.166z"/></svg>Shopify</li>
+        <li style="--brand:#21759B"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M21.469 6.825c.84 1.537 1.318 3.3 1.318 5.175 0 3.979-2.156 7.456-5.363 9.325l3.295-9.527c.615-1.54.82-2.771.82-3.864 0-.405-.026-.78-.07-1.11m-7.981.105c.647-.03 1.232-.105 1.232-.105.582-.075.514-.93-.067-.899 0 0-1.755.135-2.88.135-1.064 0-2.85-.15-2.85-.15-.585-.03-.661.855-.075.885 0 0 .54.061 1.125.09l1.68 4.605-2.37 7.08L5.354 6.9c.649-.03 1.234-.1 1.234-.1.585-.075.516-.93-.065-.896 0 0-1.746.138-2.874.138-.2 0-.438-.008-.69-.015C4.911 3.15 8.235 1.215 12 1.215c2.809 0 5.365 1.072 7.286 2.833-.046-.003-.091-.009-.141-.009-1.06 0-1.812.923-1.812 1.914 0 .89.513 1.643 1.06 2.531.411.72.89 1.643.89 2.977 0 .915-.354 1.994-.821 3.479l-1.075 3.585-3.9-11.61.001.014zM12 22.784c-1.059 0-2.081-.153-3.048-.437l3.237-9.406 3.315 9.087c.024.053.05.101.078.149-1.12.393-2.325.609-3.582.609M1.211 12c0-1.564.336-3.05.935-4.39L7.29 21.709C3.694 19.96 1.212 16.271 1.211 12M12 0C5.385 0 0 5.385 0 12s5.385 12 12 12 12-5.385 12-12S18.615 0 12 0"/></svg>WordPress</li>
+        <li style="--brand:var(--ink)"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="m12 1.608 12 20.784H0Z"/></svg>Vercel</li>
       </ul>
     </div>
   </section>
@@ -638,7 +661,7 @@
             <span class="work__meta">E-commerce · Indumentaria</span>
             <h3>Tienda online con Mercado Pago y envíos</h3>
             <p>Catálogo, carrito, pagos, seguimiento de envíos y campañas de Meta apuntando al catálogo.</p>
-            <div class="work__result"><b>+62%</b><span>ventas online en 3 meses</span></div>
+            <div class="work__result"><b>Tienda</b><span>lista para vender online</span></div>
           </div>
         </article>
 
@@ -655,7 +678,7 @@
             <span class="work__meta">Salud · Consultorio</span>
             <h3>Turnos automáticos por WhatsApp con IA</h3>
             <p>Sitio institucional más un asistente que responde consultas, agenda y recuerda turnos sin secretaria.</p>
-            <div class="work__result"><b>-70%</b><span>llamadas para pedir turno</span></div>
+            <div class="work__result"><b>Turnos</b><span>online, sin llamadas</span></div>
           </div>
         </article>
 
@@ -672,7 +695,7 @@
             <span class="work__meta">Fitness · Gimnasio</span>
             <h3>Marca nueva, redes y campañas locales</h3>
             <p>Rebranding completo, contenido mensual para Instagram y campañas de Meta a 5 km a la redonda.</p>
-            <div class="work__result"><b>3x</b><span>consultas por mes</span></div>
+            <div class="work__result"><b>Consultas</b><span>directo a tu WhatsApp</span></div>
           </div>
         </article>
       </div>
@@ -745,7 +768,7 @@
         <article class="plan reveal" style="--i:0">
           <span class="plan__name">Presencia</span>
           <p class="plan__for">Para arrancar bien: tu negocio online en semanas.</p>
-          <div class="plan__price"><em>Pago único</em>USD 450<small>+ IVA</small></div>
+          <div class="plan__price"><em>Pago único</em><span class="usd" tabindex="0" data-usd="450">USD 450<span class="ars" role="tooltip"></span></span><small>+ IVA</small></div>
           <ul>
             <li>Sitio web de hasta 5 secciones</li>
             <li>Diseño responsive y optimizado para Google</li>
@@ -761,7 +784,7 @@
           <span class="plan__flag">Más elegido</span>
           <span class="plan__name">Crecimiento</span>
           <p class="plan__for">Para traer clientes todos los meses.</p>
-          <div class="plan__price"><em>Mensual</em>USD 390<small>/ mes + IVA</small></div>
+          <div class="plan__price"><em>Mensual</em><span class="usd" tabindex="0" data-usd="390" data-per="mes">USD 390<span class="ars" role="tooltip"></span></span><small>/ mes + IVA</small></div>
           <ul>
             <li>Todo lo del plan Presencia</li>
             <li>Gestión de Instagram y Facebook (12 posts + historias)</li>
@@ -776,7 +799,7 @@
         <article class="plan reveal" style="--i:2">
           <span class="plan__name">Integral</span>
           <p class="plan__for">Para dejar todo lo digital en un solo equipo.</p>
-          <div class="plan__price"><em>Mensual</em>USD 790<small>/ mes + IVA</small></div>
+          <div class="plan__price"><em>Mensual</em><span class="usd" tabindex="0" data-usd="790" data-per="mes">USD 790<span class="ars" role="tooltip"></span></span><small>/ mes + IVA</small></div>
           <ul>
             <li>Todo lo del plan Crecimiento</li>
             <li>Tienda online o sistema a medida</li>
@@ -788,7 +811,7 @@
           <a class="btn btn--ghost" href="#contacto">Hablar del plan Integral</a>
         </article>
       </div>
-      <p class="plans__note">Valores de referencia. El presupuesto final se define en la propuesta según el alcance. Facturación A y B, pago en pesos al cambio del día.</p>
+      <p class="plans__note">Valores de referencia. El presupuesto final se define en la propuesta según el alcance. Facturación A y B, pago en pesos al cambio del día. Tocá o pasá el mouse por un precio para verlo en pesos. <span id="fx"></span></p>
     </div>
   </section>
 
@@ -803,41 +826,55 @@
         <article class="quote reveal" style="--i:0">
           <div class="quote__stars" aria-label="5 estrellas"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3 6.6 7 .8-5.2 4.8L18.2 21 12 17.4 5.8 21l1.4-6.8L2 9.4l7-.8z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3 6.6 7 .8-5.2 4.8L18.2 21 12 17.4 5.8 21l1.4-6.8L2 9.4l7-.8z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3 6.6 7 .8-5.2 4.8L18.2 21 12 17.4 5.8 21l1.4-6.8L2 9.4l7-.8z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3 6.6 7 .8-5.2 4.8L18.2 21 12 17.4 5.8 21l1.4-6.8L2 9.4l7-.8z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3 6.6 7 .8-5.2 4.8L18.2 21 12 17.4 5.8 21l1.4-6.8L2 9.4l7-.8z"/></svg></div>
           <blockquote>Nos armaron la tienda en tres semanas y nos explicaron todo en un idioma que entendemos. Hoy vendemos más online que en el local.</blockquote>
-          <div class="quote__who"><span class="avatar">NA</span><div><b>Nombre Apellido</b><span>Dueño · Tienda de indumentaria</span></div></div>
+          <a class="quote__web" href="demos/modalume.html" target="_blank" rel="noopener" title="Ver sitio de ejemplo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"/></svg>www.modalume.com.ar</a>
+          <div class="quote__who"><span class="avatar">MI</span><div><b>Martina Ibáñez</b><span>Dueña · Modalume Indumentaria</span></div></div>
         </article>
         <article class="quote reveal" style="--i:1">
           <div class="quote__stars" aria-label="5 estrellas"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3 6.6 7 .8-5.2 4.8L18.2 21 12 17.4 5.8 21l1.4-6.8L2 9.4l7-.8z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3 6.6 7 .8-5.2 4.8L18.2 21 12 17.4 5.8 21l1.4-6.8L2 9.4l7-.8z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3 6.6 7 .8-5.2 4.8L18.2 21 12 17.4 5.8 21l1.4-6.8L2 9.4l7-.8z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3 6.6 7 .8-5.2 4.8L18.2 21 12 17.4 5.8 21l1.4-6.8L2 9.4l7-.8z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3 6.6 7 .8-5.2 4.8L18.2 21 12 17.4 5.8 21l1.4-6.8L2 9.4l7-.8z"/></svg></div>
           <blockquote>El bot de WhatsApp agenda los turnos solo. Dejé de perder pacientes por no atender el teléfono mientras estoy en consulta.</blockquote>
-          <div class="quote__who"><span class="avatar avatar--sky">NA</span><div><b>Nombre Apellido</b><span>Odontóloga · Consultorio</span></div></div>
+          <a class="quote__web" href="demos/odontolumen.html" target="_blank" rel="noopener" title="Ver sitio de ejemplo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"/></svg>www.odontolumen.com.ar</a>
+          <div class="quote__who"><span class="avatar avatar--sky">LF</span><div><b>Dra. Lucía Fernández</b><span>Odontóloga · Consultorio Lumen</span></div></div>
         </article>
         <article class="quote reveal" style="--i:2">
           <div class="quote__stars" aria-label="5 estrellas"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3 6.6 7 .8-5.2 4.8L18.2 21 12 17.4 5.8 21l1.4-6.8L2 9.4l7-.8z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3 6.6 7 .8-5.2 4.8L18.2 21 12 17.4 5.8 21l1.4-6.8L2 9.4l7-.8z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3 6.6 7 .8-5.2 4.8L18.2 21 12 17.4 5.8 21l1.4-6.8L2 9.4l7-.8z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3 6.6 7 .8-5.2 4.8L18.2 21 12 17.4 5.8 21l1.4-6.8L2 9.4l7-.8z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3 6.6 7 .8-5.2 4.8L18.2 21 12 17.4 5.8 21l1.4-6.8L2 9.4l7-.8z"/></svg></div>
           <blockquote>Precio cerrado, entregas semanales y cero excusas. Es la primera agencia que nos cumplió los plazos que prometió.</blockquote>
-          <div class="quote__who"><span class="avatar avatar--ink">NA</span><div><b>Nombre Apellido</b><span>Socio · Estudio contable</span></div></div>
+          <a class="quote__web" href="demos/gimnasiopulso.html" target="_blank" rel="noopener" title="Ver sitio de ejemplo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"/></svg>www.gimnasiopulso.com.ar</a>
+          <div class="quote__who"><span class="avatar avatar--ink">GS</span><div><b>Gustavo Sosa</b><span>Dueño · Gimnasio Pulso</span></div></div>
         </article>
       </div>
+      <p class="plans__note">Testimonios y sitios de ejemplo para mostrar el formato. Se reemplazan por casos reales.</p>
     </div>
   </section>
 
-  <!-- TEAM. Completar nombres, roles y fotos reales -->
+  <!-- TEAM. Sin nombres -->
   <section class="band" id="equipo">
     <div class="wrap section team">
       <div class="team__text reveal">
-        <span class="eyebrow">Equipo</span>
-        <h2 style="font-size:clamp(1.85rem,3.8vw,2.8rem);margin-top:.9rem;">Dos personas, cero intermediarios.</h2>
-        <p>Cuando nos escribís, hablás directo con quienes diseñan y programan tu proyecto. Sin ejecutivos de cuenta ni cadenas de mails: decisiones rápidas y respuestas en el día.</p>
+        <span class="eyebrow">Cómo trabajamos</span>
+        <h2 style="font-size:clamp(1.85rem,3.8vw,2.8rem);margin-top:.9rem;">Trato directo, cero intermediarios.</h2>
+        <p>Cuando nos escribís, hablás directo con quienes trabajan en tu proyecto. Sin ejecutivos de cuenta ni cadenas de mails: decisiones rápidas y respuesta dentro de las 48 h.</p>
         <p>Somos de Buenos Aires y trabajamos con Pymes de todo el país en modo remoto, con reuniones por videollamada y un grupo de WhatsApp por proyecto.</p>
       </div>
       <div class="team__cards">
         <div class="member reveal" style="--i:0">
-          <span class="avatar">JR</span>
-          <div><b>Joaquín Rodríguez</b><br><span>Estrategia y desarrollo</span></div>
-          <p>Sitios, sistemas a medida e integraciones con IA. Habla con vos de negocio, no de código.</p>
+          <span class="avatar "><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 7l-5 5 5 5M16 7l5 5-5 5M14 4l-4 16"/></svg></span>
+          <div><b>Desarrollo y sistemas</b><br><span>Sitios, tiendas e IA</span></div>
+          <p>Sitios web, tiendas online, chatbots y sistemas a medida, pensados para que vendas más y trabajes menos.</p>
         </div>
         <div class="member reveal" style="--i:1">
-          <span class="avatar avatar--sky">NA</span>
-          <div><b>Nombre Apellido</b><br><span>Diseño y contenido</span></div>
-          <p>Marca, redes y campañas. Convierte lo que hace tu negocio en algo que dan ganas de compartir.</p>
+          <span class="avatar avatar--sky"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 20h9M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4z"/></svg></span>
+          <div><b>Diseño y marca</b><br><span>Identidad y piezas</span></div>
+          <p>Logo, identidad y piezas gráficas para que tu negocio se vea profesional en todos lados.</p>
+        </div>
+        <div class="member reveal" style="--i:2">
+          <span class="avatar avatar--ink"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 17l6-6 4 4 8-8M15 7h6v6"/></svg></span>
+          <div><b>Publicidad</b><br><span>Meta y Google Ads</span></div>
+          <p>Campañas medidas, con reporte mensual, para invertir donde realmente trae clientes.</p>
+        </div>
+        <div class="member reveal" style="--i:3">
+          <span class="avatar "><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12a8 8 0 0 1-11.6 7.1L3 21l1.9-6.4A8 8 0 1 1 21 12z"/></svg></span>
+          <div><b>Redes y contenido</b><br><span>Instagram y Facebook</span></div>
+          <p>Planificación y publicaciones constantes, con tono propio y resultados a la vista.</p>
         </div>
       </div>
     </div>
@@ -887,7 +924,7 @@
       <p>Contanos qué necesitás y te respondemos con una propuesta concreta, con precio cerrado, en 48 h.</p>
       <div class="cta__actions">
         <a class="btn btn--primary" href="#contacto">Pedir presupuesto <span class="arw">&rarr;</span></a>
-        <a class="btn btn--ghost" href="https://wa.me/5491134795587?text=Hola%20Cheetahlabs%2C%20quiero%20una%20propuesta%20para%20mi%20negocio" target="_blank" rel="noopener">Escribir por WhatsApp</a>
+        <a class="btn btn--ghost" href="https://wa.me/5491134795587?text=Hola%20Cheetahlabs%2C%20quiero%20consultar%20por%20un%20servicio%20%28sitio%20web%2C%20tienda%20online%2C%20publicidad%2C%20redes%20u%20otro%29.%20Mi%20rubro%20es%3A%20" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>Escribir por WhatsApp</a>
       </div>
     </div>
   </section>
@@ -913,7 +950,7 @@
         <h4>Contacto</h4>
         <ul class="contact-list">
           <li><span class="k">Email</span><a href="mailto:cheetahlabs@gmail.com">cheetahlabs@gmail.com</a></li>
-          <li><span class="k">WhatsApp</span><a id="wa-link" href="https://wa.me/5491134795587" target="_blank" rel="noopener">+54 9 11 3479-5587</a></li>
+          <li><span class="k">WhatsApp</span><a id="wa-link" href="https://wa.me/5491134795587?text=Hola%20Cheetahlabs%2C%20quiero%20consultar%20por%20un%20servicio%20%28sitio%20web%2C%20tienda%20online%2C%20publicidad%2C%20redes%20u%20otro%29.%20Mi%20rubro%20es%3A%20" target="_blank" rel="noopener">+54 9 11 3479-5587</a></li>
           <li><span class="k">Instagram</span><a href="https://instagram.com/cheetahlabs" target="_blank" rel="noopener">@cheetahlabs</a></li>
           <li><span class="k">LinkedIn</span><a href="https://www.linkedin.com/company/cheetahlabs" target="_blank" rel="noopener">/company/cheetahlabs</a></li>
         </ul>
@@ -952,7 +989,7 @@
           </div>
           <div class="form__row-actions">
             <button class="btn btn--primary" type="submit" id="submitBtn">Enviar consulta <span class="arw">&rarr;</span></button>
-            <a class="btn btn--wa" id="wa-btn" href="https://wa.me/5491134795587" target="_blank" rel="noopener">WhatsApp</a>
+            <a class="btn btn--wa" id="wa-btn" href="https://wa.me/5491134795587?text=Hola%20Cheetahlabs%2C%20quiero%20consultar%20por%20un%20servicio%20%28sitio%20web%2C%20tienda%20online%2C%20publicidad%2C%20redes%20u%20otro%29.%20Mi%20rubro%20es%3A%20" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>WhatsApp</a>
           </div>
           <small id="form-note">Te respondemos dentro de las 48 h.</small>
         </form>
@@ -967,8 +1004,8 @@
 </footer>
 
 <!-- WhatsApp flotante -->
-<a class="wa-float" id="waFloat" href="https://wa.me/5491134795587?text=Hola%20Cheetahlabs%2C%20quiero%20una%20propuesta%20para%20mi%20negocio" target="_blank" rel="noopener" aria-label="Escribinos por WhatsApp">
-  <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 1.8a8.2 8.2 0 0 1 0 16.4 8.1 8.1 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 0 1 12 3.8zm-3 4.3c-.2 0-.5 0-.7.3-.3.3-1 1-1 2.4s1 2.8 1.2 3c.1.2 2 3.1 4.9 4.3 2.4 1 2.9.8 3.4.7.5 0 1.7-.7 1.9-1.4.2-.7.2-1.2.2-1.4-.1-.1-.3-.2-.6-.3l-2-1c-.3-.1-.5-.1-.7.1l-.9 1.1c-.2.2-.3.2-.6.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.2-.4.7-1.4.1-.2 0-.4 0-.5l-.9-2.2c-.2-.5-.4-.5-.6-.5z"/></svg>
+<a class="wa-float" id="waFloat" href="https://wa.me/5491134795587?text=Hola%20Cheetahlabs%2C%20quiero%20consultar%20por%20un%20servicio%20%28sitio%20web%2C%20tienda%20online%2C%20publicidad%2C%20redes%20u%20otro%29.%20Mi%20rubro%20es%3A%20" target="_blank" rel="noopener" aria-label="Escribinos por WhatsApp">
+  <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
   <span>Escribinos</span>
 </a>
 
@@ -992,6 +1029,27 @@
       try { localStorage.setItem('cl-theme', next); } catch (e) {}
       paintIco();
     });
+
+    /* ---- precios en pesos (dólar oficial en tiempo real, dolarapi.com) ---- */
+    (function () {
+      var items = document.querySelectorAll('.usd'), fx = document.getElementById('fx');
+      var fmt = function (n) { return Math.round(n).toLocaleString('es-AR'); };
+      var setAll = function (fn) { items.forEach(function (el) { el.querySelector('.ars').innerHTML = fn(el); }); };
+      setAll(function () { return 'Cargando cotización…'; });
+      fetch('https://dolarapi.com/v1/dolares/oficial')
+        .then(function (r) { if (!r.ok) throw new Error('http'); return r.json(); })
+        .then(function (d) {
+          var rate = Number(d.venta); if (!rate) throw new Error('rate');
+          var when = '';
+          try { when = new Date(d.fechaActualizacion).toLocaleString('es-AR', { day: '2-digit', month: '2-digit', hour: '2-digit', minute: '2-digit' }); } catch (e) {}
+          setAll(function (el) {
+            var per = el.getAttribute('data-per') ? ' / ' + el.getAttribute('data-per') : '';
+            return '<b>≈ $' + fmt(Number(el.getAttribute('data-usd')) * rate) + ' ARS' + per + '</b><span>+ IVA · dólar oficial $' + fmt(rate) + (when ? ' · ' + when : '') + '</span>';
+          });
+          if (fx) fx.textContent = 'Dólar oficial hoy (venta): $' + fmt(rate) + (when ? ' (actualizado ' + when + ')' : '');
+        })
+        .catch(function () { setAll(function () { return 'No pudimos traer la cotización ahora. Escribinos y te pasamos el valor en pesos.'; }); });
+    })();
 
     /* ---- header shadow + whatsapp flotante ---- */
     var header = document.querySelector('.site-header'), waFloat = document.getElementById('waFloat');
